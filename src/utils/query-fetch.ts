@@ -1,7 +1,7 @@
 import { fetchApi } from './api';
 
 export async function queryFetch(options: FetchApiProps) {
-    const baseUrl = `${window.location.origin}/admin/api/`;
+    const baseUrl = `${window.location.origin}/api/`;
     
     return fetchApi({
         baseUrl: baseUrl,

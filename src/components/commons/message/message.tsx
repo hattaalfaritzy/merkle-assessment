@@ -13,7 +13,7 @@ export default function Message({ type = 'error', label, className, onClick = ()
 
     return (
         <div className={clsx('flex justify-center items-center rounded-lg px-3 py-1.5 bg-opacity-20 w-full', tagTypes, className)} onClick={onClick}>
-            <div className='flex-1 px-1 text-xs'>{label}</div>
+            <div className='flex-1 px-1 text-xs capitalize'>{label}</div>
         </div>
     );
 }

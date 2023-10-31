@@ -17,6 +17,8 @@ export const login = async ({ username, password }: AuthInterface.APIParamsLogin
         }
         return res;
     } catch (error: any) {
+        console.log(error, 'error');
+        
         throw Error(error?.response?.data?.error?.message);
     }
 };

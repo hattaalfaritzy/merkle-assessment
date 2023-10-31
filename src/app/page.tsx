@@ -1,13 +1,14 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { Button, ImageWithFallback } from '@/components/commons';
 import { InputPassword, InputText } from '@/components/forms';
 import { formLogin } from '@/utils/form-validations';
+import { login } from '@/services/auth';
 
 export default function Login() {
     const [loading, setLoading] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     const {
         register,
@@ -18,7 +19,26 @@ export default function Login() {
 
     const onSubmit = async (value: AuthInterface.APIParamsLogin) => {
         setLoading(true);
-        console.log(value, 'cek value');        
+        try {
+            const res: any = await login({
+                username: value.username,
+                password: value.password,
+            });
+
+            if (typeof res === 'string') {
+                setErrorMessage(res);
+                if (errorMessage?.toLowerCase().includes('username') && errorMessage?.toLowerCase().includes('password')) {
+                    setError('username', { message: errorMessage });
+                    setError('password', { message: errorMessage });
+                } else if (errorMessage.toLowerCase().includes('username')) {
+                    setError('username', { message: errorMessage });
+                } else if (errorMessage.toLowerCase().includes('password')) {
+                    setError('password', { message: errorMessage });
+                }
+            }
+        } catch (err: any) {
+            console.log(err);
+        }
         setLoading(false);
     };
 
