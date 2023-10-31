@@ -47,7 +47,9 @@ export default function Login() {
             <div className='flex flex-col justify-center items-center h-screen space-y-4 px-4 lg:px-0 bg-dark'>
             <div className='flex flex-col justify-start items-start'>
                 <span className='text-sm text-white'>Login</span>
-                <ImageWithFallback alt='Logo Merkle Innovation' width={80} height={80} src='/images/logo.png' className='w-40 h-auto' />
+                <div className='flex flex-row'>
+                    <ImageWithFallback alt='Logo Merkle Innovation' width={80} height={80} src='/images/logo.png' className='w-40 h-auto' />
+                </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full lg:w-2/6 space-y-4'>
                 <InputText type='text' register={register('username')} errMessage={errors.username?.message} placeholder='Email' label='Email' />

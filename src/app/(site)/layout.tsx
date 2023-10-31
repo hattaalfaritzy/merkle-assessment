@@ -1,4 +1,3 @@
-import '@/styles/index.scss';
 import Header from '@/components/layouts/header';
 import Footer from '@/components/layouts/footer';
 
